@@ -1,2 +1,12 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<h1>Votre restaurant</h1>
+<ul>
+	<li><%= @restaurant.name %></li>
+	<li><%= @restaurant.address %></li>
+	<li><%= @restaurant.phone_number %></li>
+	<li><%= @restaurant.category %></li>
+</ul>
+<%= link_to 'back to the list', restaurants_path, class:"btn btn-warning" %> <br>
+<%= link_to 'edit',  edit_restaurant_path, class:"btn btn-primary" %>
+<%= link_to "Delete",
+  restaurant_path(@restaurant),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger"%>
