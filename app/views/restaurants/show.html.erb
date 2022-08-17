@@ -5,8 +5,21 @@
 	<li><%= @restaurant.phone_number %></li>
 	<li><%= @restaurant.category %></li>
 </ul>
-<%= link_to 'back to the list', restaurants_path, class:"btn btn-warning" %> <br>
+<br>
+<p><strong>Reviews</strong></p>
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item"><%= review.content %></li>
+    <li class="list-group-item">Votre note : <%= review.rating %></li>
+  <% end %>
+</ul>
+<br>
+
+<%= link_to "add review",  new_restaurant_review_path(@restaurant), class:"btn btn-warning mb-3" %> <br>
+<%= link_to 'back to the list', restaurants_path, class:"btn btn-warning mb-3" %>
+ <br>
 <%= link_to 'edit',  edit_restaurant_path, class:"btn btn-primary" %>
+
 <%= link_to "Delete",
   restaurant_path(@restaurant),
   data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger"%>
